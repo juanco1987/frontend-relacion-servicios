@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { formatCurrency } from '../../utils/numberFormatters';
 import KpiCard from '../common/KpiCard';
 import CustomButton from '../common/CustomButton';
-import CustomTooltip from './components/CustomTooltip';
+import CustomTooltip from '../common/CustomTooltip';
 import ServiciosPendientesEfectivo from './ServiciosPendientesEfectivo';
 import ServiciosPendientesCobrar from './ServiciosPendientesCobrar';
 
@@ -562,18 +562,23 @@ const EnhancedAnalyticsDashboard = ({ file, fechaInicio, fechaFin }) => {
           <BarChart data={dataToUse.clientesRecurrentes}>
             <CartesianGrid strokeDasharray="3 3" stroke={theme.bordePrincipal} />
             <XAxis dataKey="cliente" stroke={theme.textoPrincipal} />
-            <YAxis stroke={theme.textoPrincipal} />
+            <YAxis yAxisId="left" stroke={theme.textoPrincipal} />
+            <YAxis yAxisId="right" orientation="right" stroke={theme.textoPrincipal} />
             <Tooltip 
-              formatter={(value, name) => name === 'valor' ? formatCurrency(value) : value}
-              contentStyle={{
-                backgroundColor: theme.fondoContenedor,
-                border: `1px solid ${theme.bordePrincipal}`,
-                color: theme.textoPrincipal
-              }}
-            />
+                content={
+                  <CustomTooltip 
+                    formatter={(value, name) => {
+                      if (name === 'Valor Total') {
+                        return formatCurrency(value);
+                      }
+                      return value;
+                    }} 
+                  />
+                } 
+              />
             <Legend />
-            <Bar dataKey="servicios" fill={theme.textoInfo} name="Servicios" />
-            <Bar dataKey="valor" fill={theme.terminalVerde} name="Valor Total" />
+            <Bar yAxisId="left" dataKey="servicios" fill={theme.textoInfo} radius={[16, 16, 16, 16]} name="Servicios" />
+            <Bar yAxisId="right" dataKey="valor" fill={theme.terminalVerde} radius={[16, 16, 16, 16]} name="Valor Total" />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -613,25 +618,51 @@ const EnhancedAnalyticsDashboard = ({ file, fechaInicio, fechaFin }) => {
         boxShadow: theme.sombraComponente,
         border: `1px solid ${theme.bordePrincipal}`
       }}>
-        <h3 style={{ marginBottom: '20px', color: theme.textoPrincipal }}>Servicios por Tipo</h3>
+        <h3 style={{ marginBottom: '20px', color: theme.textoPrincipal }}>
+          Servicios por Tipo
+        </h3>
+
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={dataToUse.serviciosPorTipo}>
             <CartesianGrid strokeDasharray="3 3" stroke={theme.bordePrincipal} />
             <XAxis dataKey="tipo" stroke={theme.textoPrincipal} />
-            <YAxis stroke={theme.textoPrincipal} />
-            <Tooltip 
-              formatter={(value, name) => name === 'valor' ? formatCurrency(value) : value}
-              contentStyle={{
-                backgroundColor: theme.fondoContenedor,
-                border: `1px solid ${theme.bordePrincipal}`,
-                color: theme.textoPrincipal
-              }}
+            <YAxis yAxisId="left" stroke={theme.textoPrincipal} />     
+            <YAxis yAxisId="right" orientation="right" stroke={theme.textoPrincipal} /> 
+
+            <Tooltip
+              content={
+                <CustomTooltip
+                  formatter={(value, name) => {
+                    if (name === 'Valor') return formatCurrency(value);
+                    if (name === 'Cantidad') return `${value} servicios`;
+                    return value;
+                  }}
+                />
+              }
             />
+
             <Legend />
-            <Bar dataKey="cantidad" fill={theme.textoInfo} name="Cantidad" />
-            <Bar dataKey="valor" fill={theme.terminalVerde} name="Valor" />
+
+            {/* Cantidad de servicios (escala izquierda) */}
+            <Bar
+              yAxisId="left"
+              dataKey="cantidad"
+              fill={theme.textoInfo}
+              radius={[16, 16, 16, 16]}
+              name="Cantidad"
+            />
+
+            {/* Valor total (escala derecha) */}
+            <Bar
+              yAxisId="right"
+              dataKey="valor"
+              fill={theme.terminalVerde}
+              radius={[16, 16, 16, 16]}
+              name="Valor"
+            />
           </BarChart>
         </ResponsiveContainer>
+
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>

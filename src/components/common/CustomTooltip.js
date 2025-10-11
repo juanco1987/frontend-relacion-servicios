@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { useTheme } from '../../../context/ThemeContext';
-import { formatCurrency } from '../../../utils/numberFormatters';
+import { useTheme } from '../../context/ThemeContext';
+import { formatCurrency } from '../../utils/numberFormatters';
 
 function CustomTooltip({ active, payload, label, formatter }) {
   const { theme } = useTheme();
