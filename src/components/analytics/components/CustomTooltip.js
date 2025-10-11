@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import { useTheme } from '../../../context/ThemeContext';
 import { formatCurrency } from '../../../utils/numberFormatters';
 
-function CustomTooltip({ active, payload, label }) {
+function CustomTooltip({ active, payload, label, formatter }) {
   const { theme } = useTheme();
 
   if (active && payload && payload.length) {
@@ -20,9 +20,13 @@ function CustomTooltip({ active, payload, label }) {
         </Typography>
         {payload.map((entry, index) => {
           if (entry.name === 'precio') return null;
+
+          const displayValue = formatter
+            ? formatter(entry.value, entry.name)
+            : formatCurrency(entry.value);
           return (
             <Typography key={index} variant="body2" sx={{ color: entry.color }}>
-              {entry.name}: {formatCurrency(entry.value)}
+              {entry.name}:  {displayValue}
             </Typography>
           );
         })}
