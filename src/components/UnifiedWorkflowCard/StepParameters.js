@@ -225,8 +225,7 @@ const StepParameters = ({
               Imágenes para el reporte
             </Typography>
           </Box>
-          {allowImages ? (
-            <>
+
               <CustomButton
                 variant="contained"
                 component="label"
