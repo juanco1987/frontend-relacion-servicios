@@ -226,6 +226,8 @@ const StepParameters = ({
             </Typography>
           </Box>
 
+          {allowImages ? (
+            <>
               <CustomButton
                 variant="contained"
                 component="label"

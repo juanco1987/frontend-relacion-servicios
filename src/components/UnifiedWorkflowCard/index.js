@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import {  Paper, } from '@mui/material';
 
 import { motion } from 'framer-motion';
@@ -103,7 +103,7 @@ const UnifiedWorkflowCard = ({
   };
 
   // Función para confirmar el nuevo proceso
-  const confirmNewProcess = () => {
+  const confirmNewProcess = useCallback(() => {
     // Resetear todos los estados
     setActiveStep(0);
     setReportName(generateDefaultName());
