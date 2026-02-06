@@ -59,8 +59,8 @@ export const RESOURCE_PATHS = {
 };
 
 export const APP_MESSAGES = {
-  APP_TITLE: "Sistema de Relacion de Servicios",
-  APP_TITLE_SHORT: "Relaciones de Servicios",
+  APP_TITLE: "Gestor de Reportes",
+  APP_TITLE_SHORT: "Reportes",
   FILE_SELECT_TITLE: "Seleccionar archivo Excel",
   FILE_TYPES: ["Archivos Excel (*.xlsx *.xls)", "Todos los archivos (*.*)"],
   FILE_SELECTED: "📁 Archivo seleccionado:",
@@ -143,7 +143,7 @@ export const APP_MESSAGES = {
   PDF_OPEN_ICON_WARNING_NAME: "OJO",
   EXCEL_ICON_WARNING_NAME: "excel",
   FOLDER_ICON_WARNING_NAME: "carpeta",
-  HEADER_SUBTITLE: "Genera informes de servicios pagados con tecnología avanzada",
+  HEADER_SUBTITLE: "Crea informes profesionales en segundos",
   HEADER_STATUS_LABEL: "Estado:",
   HEADER_STATUS_NORMAL: "Normal",
   MENU_BUTTON_TEXT: "☰",
