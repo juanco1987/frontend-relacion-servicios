@@ -22,9 +22,9 @@ function NoDataState({ onFileChange }) {
           background: theme.fondoContenedor,
           borderRadius: '28px',
           boxShadow: theme.sombraContenedor,
-          p: { xs: 2, md: 4 },
+          p: { xs: 3, md: 4 },
           overflow: 'hidden',
-          minHeight: { xs: 'auto', md: '60vh' },
+          minHeight: '60vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -37,46 +37,43 @@ function NoDataState({ onFileChange }) {
           src={excelIcon}
           alt="Excel Analytics"
           sx={{ 
-            width: { xs: 64, md: 80 }, 
-            height: { xs: 64, md: 80 },
-            mb: { xs: 2, md: 3 },
-            objectFit: 'contain',
-            objectPosition: 'center',
+            width: { xs: 60, md: 80 }, 
+            height: { xs: 60, md: 80 },
+            mb: 3,
             filter: theme.modo === 'oscuro' ? 'invert(1)' : 'none',
-            opacity: 0.9,
-            imageRendering: 'crisp-edges'
+            opacity: 0.8
           }}
         />
         
-        <Typography variant="h5" sx={{
+        <Typography variant="h4" sx={{
           color: theme.textoPrincipal,
           fontWeight: 'bold',
-          mb: { xs: 1.5, md: 2 },
-          fontSize: { xs: '1.5rem', md: '2.2rem' }
+          mb: 2,
+          fontSize: { xs: '1.8rem', md: '2.2rem' }
         }}>
-          Sin datos aún
+          📊 Analytics Dashboard
         </Typography>
         
-        <Typography variant="body2" sx={{
+        <Typography variant="h6" sx={{
           color: theme.textoSecundario,
-          mb: { xs: 3, md: 4 },
-          lineHeight: 1.5,
-          maxWidth: { xs: '100%', md: 600 },
-          fontSize: { xs: '0.9rem', md: '1rem' }
+          mb: 4,
+          lineHeight: 1.6,
+          maxWidth: 600
         }}>
-          Sube tu archivo Excel para comenzar a analizar tus datos financieros
+          Para visualizar tus estadísticas y análisis financieros, 
+          carga tu archivo Excel con los datos de Analytics
         </Typography>
 
         <Box sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          mb: { xs: 3, md: 4 },
-          p: { xs: 2, md: 3 },
+          mb: 4,
+          p: 3,
           borderRadius: '16px',
           background: theme.fondoOverlay,
           border: `2px dashed ${theme.bordePrincipal}`,
-          maxWidth: { xs: '100%', md: 400 },
+          maxWidth: 400,
           width: '100%'
         }}>
           <Box
@@ -90,17 +87,16 @@ function NoDataState({ onFileChange }) {
               filter: theme.modo === 'oscuro' ? 'invert(1)' : 'none'
             }}
           />
-          <Typography variant="body2" sx={{
+          <Typography variant="body1" sx={{
             color: theme.textoPrincipal,
-            fontWeight: 500,
-            fontSize: { xs: '0.85rem', md: '1rem' }
+            fontWeight: 500
           }}>
-            📊 Archivos: .xlsx, .xls
+            Formato soportado: .xlsx, .xls
           </Typography>
         </Box>
 
         {/* Campo de carga */}
-        <Box sx={{ width: '100%', maxWidth: { xs: '100%', md: 500 }, mb: 3, px: { xs: 1, md: 0 } }}>          
+        <Box sx={{ width: '100%', maxWidth: 500, mb: 3 }}>          
           <motion.div
             whileHover={ANIMATIONS.formFieldHover}
             whileTap={{ scale: 0.98 }}
@@ -115,15 +111,15 @@ function NoDataState({ onFileChange }) {
                   color: theme.textoPrincipal,
                   borderColor: theme.bordePrincipal,
                   borderRadius: '25px',
-                  px: { xs: 3, md: 4 },
-                  py: 1.5,
-                  fontSize: { xs: '0.95rem', md: '1rem' },
+                  px: 4,
+                  py: 2,
+                  fontSize: '1rem',
                   fontWeight: 600,
                   textTransform: 'none',
                   transition: 'all 0.3s ease',
                   borderWidth: '2px',
-                  minWidth: { xs: '100%', md: '200px' },
-                  height: { xs: '48px', md: '50px' },
+                  minWidth: '200px',
+                  height: '50px',
                   boxShadow: theme.sombraContenedor,
                   '&:hover': {
                     background: theme.fondoHover,
@@ -140,7 +136,7 @@ function NoDataState({ onFileChange }) {
                   }
                 }}
               >
-                📁 Seleccionar Archivo
+                📁 Seleccionar Archivo Excel
                 <input
                   type="file"
                   hidden
@@ -154,9 +150,9 @@ function NoDataState({ onFileChange }) {
 
         <Typography variant="body2" sx={{
           color: theme.textoSecundario,
-          fontSize: { xs: '0.85rem', md: '0.95rem' }
+          fontStyle: 'italic'
         }}>
-          ✨ Visualiza gráficos, indicadores y análisis detallados
+          Una vez cargado, podrás ver gráficos, KPIs y resúmenes detallados
         </Typography>
       </Paper>
     </motion.div>

@@ -1,21 +1,5 @@
 .App {
   text-align: center;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Mobile-first responsive design */
-@media (max-width: 768px) {
-  .App {
-    padding: 0;
-    margin: 0;
-  }
-
-  .App-logo {
-    height: 20vmin;
-  }
 }
 
 .App-logo {
@@ -55,30 +39,4 @@
 
 body {
   background: #181f2a;
-}
-
-/* Optimizaciones para móvil */
-@media (max-width: 768px) {
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  body, html, #root {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  /* Prevenir que el navegador abra en pantalla pequeña */
-  input:focus,
-  textarea:focus,
-  select:focus {
-    font-size: 16px;
-  }
-
-  /* Mejor espaciado en móvil */
-  .App > div {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 }

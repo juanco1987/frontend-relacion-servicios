@@ -17,30 +17,28 @@ const Header = React.memo(() => {
         background: 'none',
         borderRadius: 0,
         boxShadow: 'none',
-        p: { xs: 2, md: 2 },
+        p: { xs: 1, md: 2 },
+        pr: { xs: 7, md: 2 }, // Padding extra a la derecha en móviles para el botón de tema
         mb: 0,
         display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
         alignItems: 'center',
         justifyContent: 'center',
-        gap: { xs: 2, md: 3 },
-        minHeight: { xs: 'auto', md: 110 },
+        minHeight: { xs: 100, md: 110 },
         position: 'relative',
       }}
     >
-      {/* Botón de alternancia de tema */}
+      {/* Botón de alternancia de tema - esquina superior derecha */}
       <Box
         sx={{
-          position: { xs: 'absolute', md: 'relative' },
-          top: { xs: 8, md: 'auto' },
-          right: { xs: 8, md: 'auto' },
+          position: 'absolute',
+          top: { xs: 8, md: 12 },
+          right: { xs: 8, md: 12 },
           width: 40,
           height: 40,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 10,
-          order: { xs: -1, md: 3 },
         }}
       >
         <motion.div
@@ -85,34 +83,32 @@ const Header = React.memo(() => {
         initial={{ opacity: 0, rotate: -180 }}
         animate={{ opacity: 1, rotate: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{ order: 1 }}
       >
         <Avatar
           src={logo}
           alt="Logo"
           sx={{
-            width: { xs: 60, md: 70 },
-            height: { xs: 60, md: 70 },
+            width: 70,
+            height: 70,
             bgcolor: 'white',
+            mr: { xs: 2, md: 3 },
             boxShadow: theme.sombraHeader,
-            flexShrink: 0,
           }}
         />
       </motion.div>
 
       {/* Texto del título y subtítulo */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-        style={{ order: 2, textAlign: 'center', flex: 1 }}
       >
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'center',
-          gap: 0.5,
+          alignItems: 'flex-start',
+          maxWidth: { xs: 'calc(100% - 60px)', md: '100%' }, // Limitar ancho en móviles
         }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -120,16 +116,20 @@ const Header = React.memo(() => {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           >
             <Typography
-              variant="h4"
+              variant="h3"
               component="div"
               sx={{
                 color: theme.textoPrincipal,
-                fontWeight: 700,
-                lineHeight: 1.2,
-                fontSize: { xs: '1.5rem', md: '2rem' },
+                fontWeight: 800,
+                letterSpacing: '-1px',
+                lineHeight: 1.1,
+                fontSize: { xs: '1.8rem', md: '2.5rem' },
+                wordWrap: 'break-word',
+                overflowWrap: 'break-word',
+                hyphens: 'auto',
               }}
             >
-              📊 {APP_MESSAGES.APP_TITLE}
+              {APP_MESSAGES.APP_TITLE}
             </Typography>
           </motion.div>
           <motion.div
@@ -138,13 +138,13 @@ const Header = React.memo(() => {
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           >
             <Typography
-              variant="body2"
+              variant="subtitle1"
               component="div"
               sx={{
                 color: theme.textoSecundario,
-                fontWeight: 500,
-                fontSize: { xs: '0.85rem', md: '0.95rem' },
-                maxWidth: '90%',
+                fontWeight: 400,
+                fontSize: { xs: '1rem', md: '1.2rem' },
+                mt: 0.5,
               }}
             >
               {APP_MESSAGES.HEADER_SUBTITLE}

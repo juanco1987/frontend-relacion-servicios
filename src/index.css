@@ -1,35 +1,16 @@
-* {
-  box-sizing: border-box;
-}
-
-html, body, #root {
+body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  overflow: hidden;
-}
-
-body {
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Condensed', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  /* Prevenir zoom en inputs */
-  -ms-viewport-width: device-width;
-  -ms-viewport-height: device-height;
 }
 
 html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  /* Viewport fit para notch */
-  viewport-fit: cover;
+  min-height: 100vh;
 }
 
 code {
@@ -37,87 +18,7 @@ code {
     monospace;
 }
 
-/* ============================================
-   MOBILE-FIRST OPTIMIZATIONS FOR APP FEEL
-   ============================================ */
-
-/* Mejorar scrollbar en móvil */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-thumb {
-  background: #00eaff;
-  border-radius: 3px;
-}
-
-/* Ocultar scrollbar en contenedores móviles */
-@media (max-width: 768px) {
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  html, body {
-    scrollbar-width: none;
-  }
-}
-
-/* Touch-friendly buttons y elementos clickeables */
-@media (hover: none) and (pointer: coarse) {
-  button, 
-  [role="button"],
-  .MuiButton-root,
-  .MuiListItemButton-root,
-  .MuiIconButton-root {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 10px 12px;
-  }
-
-  .MuiButton-root {
-    font-size: 16px;
-  }
-}
-
-/* Mobile viewport safety area */
-@supports (padding: max(0px)) {
-  body {
-    padding-left: max(0px, env(safe-area-inset-left));
-    padding-right: max(0px, env(safe-area-inset-right));
-    padding-top: max(0px, env(safe-area-inset-top));
-    padding-bottom: max(0px, env(safe-area-inset-bottom));
-  }
-}
-
-/* Prevenir zoom en inputs (mobile) */
-input, textarea, select {
-  font-size: 16px !important;
-}
-
-/* Mejor manejo de dialogs en móvil */
-@media (max-width: 600px) {
-  .MuiDialog-paper {
-    margin: 16px !important;
-    max-height: calc(100vh - 32px) !important;
-  }
-
-  .MuiModal-root {
-    z-index: 9999 !important;
-  }
-}
-
-/* Mejorar visibilidad en pantalla pequeña */
-@media (max-height: 600px) {
-  body {
-    font-size: 14px;
-  }
-}
-
-/* Prevenir double-tap zoom */
-@media (pointer: coarse) {
-  a, button, [role="button"] {
-    touch-action: manipulation;
-  }
-}
-
+/* Scrollbar global para toda la app */
 html, body, * {
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: #00eaff #e3f0fa; /* thumb y track, usa color de acento */
